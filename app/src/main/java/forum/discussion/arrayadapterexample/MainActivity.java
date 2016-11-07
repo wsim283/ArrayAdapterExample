@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -15,12 +17,12 @@ public class MainActivity extends AppCompatActivity {
 
         ListView vehicleListView = (ListView)findViewById(R.id.vehicles_listview);
 
-        Vehicle[] vehicles = new Vehicle[3];
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
 
         //Creating each vehicle objects here
-        vehicles[0] = new Vehicle("Honda Jazz","Hatchback",true);
-        vehicles[1] = new Vehicle("Toyota Prius","Hatchback",false);
-        vehicles[2] = new Vehicle("Toyota Camry","Sedan", true);
+        vehicles.add(new Vehicle("Honda Jazz","Hatchback",true));
+        vehicles.add(new Vehicle("Toyota Prius","Hatchback",false));
+        vehicles.add(new Vehicle("Toyota Camry","Sedan", true));
 
 
         //Creating the adapter, notice the last two paremeters, list_item.xml is the layout we want to use for each item

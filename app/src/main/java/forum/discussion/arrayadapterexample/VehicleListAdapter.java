@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 
 /**
  * Created by WSIM on 5/11/2016.
@@ -15,11 +17,11 @@ import android.widget.TextView;
 
 public class VehicleListAdapter extends ArrayAdapter {
 
-    Vehicle[] vehicles;
+    ArrayList<Vehicle> vehicles;
     Context context;
     int resource;
 
-    public VehicleListAdapter(Context context, int resource, Vehicle[] vehicles){
+    public VehicleListAdapter(Context context, int resource, ArrayList<Vehicle> vehicles){
         super(context,resource); //this the constructor from our super class (ArrayAdapter), itr is required.
         this.vehicles = vehicles;
         this.context = context;
@@ -33,7 +35,7 @@ public class VehicleListAdapter extends ArrayAdapter {
      */
     @Override
     public int getCount() {
-        return vehicles.length;
+        return vehicles.size();
     }
 
 
@@ -63,8 +65,8 @@ public class VehicleListAdapter extends ArrayAdapter {
             TextView typeTextView = (TextView)convertView.findViewById(R.id.vehicle_type_textview);
 
             //setting the names of our cars and type to the corresponding textviews
-            nameTextView.setText(vehicles[position].getName());
-            typeTextView.setText(vehicles[position].getType());
+            nameTextView.setText(vehicles.get(position).getName());
+            typeTextView.setText(vehicles.get(position).getType());
         }
         return convertView;
     }
