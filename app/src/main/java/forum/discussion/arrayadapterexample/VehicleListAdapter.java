@@ -1,6 +1,7 @@
 package forum.discussion.arrayadapterexample;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,7 +53,7 @@ public class VehicleListAdapter extends ArrayAdapter {
      */
     @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         //If convertView is null that means we haven't created the item yet
         //otherwise it has already been created and if this is the case we do not need to re-create it
@@ -68,6 +69,15 @@ public class VehicleListAdapter extends ArrayAdapter {
             nameTextView.setText(vehicles.get(position).getName());
             typeTextView.setText(vehicles.get(position).getType());
         }
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent detailIntent = new Intent(context, CarDetailActivity.class);
+                detailIntent.putExtra("Car Name", vehicles.get(position).getName());
+                context.startActivity(detailIntent);
+            }
+        });
         return convertView;
     }
 }
